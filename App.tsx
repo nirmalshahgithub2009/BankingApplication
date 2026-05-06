@@ -5,12 +5,8 @@
  * @format
  */
 
-import { NewAppScreen } from '@react-native/new-app-screen';
 import { StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -24,10 +20,10 @@ function App() {
 
 function AppContent() {
   const safeAreaInsets = useSafeAreaInsets();
-console.log('Safe area insets:', safeAreaInsets);
+  console.log('Safe area insets:', safeAreaInsets);
   return (
     <View style={styles.container}>
-            <Text style={styles.label}>Banking app to start</Text>
+      <Text style={styles.label}>Banking app to start</Text>
     </View>
   );
 }
@@ -36,14 +32,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-label:{
-    backgroundColor:'yellow',
-    width:100,
-    margin:100,
-    color: 'black',        // Explicitly set text color
-    fontSize: 16,          // Set readable font size
-    padding: 10,           // Add padding for better visibility
-}
+  label: {
+    backgroundColor: 'yellow',
+    width: 100,
+    margin: 100,
+    color: 'black', // Explicitly set text color
+    fontSize: 16, // Set readable font size
+    padding: 10, // Add padding for better visibility
+  },
 });
 
 export default App;

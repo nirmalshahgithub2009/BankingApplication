@@ -1,9 +1,6 @@
 module.exports = {
   root: true,
-  extends: [
-    '@react-native',
-    '@react-native-community',
-  ],
+  extends: ['@react-native'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2021,
@@ -22,7 +19,7 @@ module.exports = {
     'react-native/split-platform-components': 'warn',
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
-    '@typescript-eslint/explicit-function-return-types': 'warn',
+    // '@typescript-eslint/explicit-function-return-types': 'warn',
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     'no-duplicate-imports': 'error',
