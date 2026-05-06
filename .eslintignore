@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+Pods/
+
+# Build & output
+build/
+dist/
+.gradle/
+android/build/
+android/gradle/
+ios/build/
+ios/Pods/
+
+# Temporary files
+.DS_Store
+*.jks
+*.keystore
+.metro-bundler-cache/
+
+# Detox
+artifacts/
+
+# Coverage
+coverage/
+
+# Config files
+metro.config.js
+babel.config.js
