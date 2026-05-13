@@ -1,1 +1,3 @@
 // Redux store configuration
+
+export {};
