@@ -1,4 +1,4 @@
-import { apiClient } from '@core/api/client';
+import { apiClient } from '@core/api-new';
 
 export type AccountSummary = {
   id: string;

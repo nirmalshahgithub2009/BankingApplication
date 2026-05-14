@@ -1,5 +1,5 @@
 // Core module barrel exports
-export * from './api';
+export * from './api-new';
 export * from './auth';
 export * from './constants';
 export * from './theme';

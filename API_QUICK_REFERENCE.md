@@ -49,6 +49,8 @@ await signOut(); // Clears tokens and redirects to login
 
 ## API Client Features
 
+The app API client is built on Axios and exposes a small wrapper around request interception, retry handling, token injection, and response normalization.
+
 ### Request Methods
 
 ```typescript
@@ -177,12 +179,12 @@ export type MyModel = {
 };
 
 export const MyService = {
-  // Fetch all
+  // Retrieve all
   getAll: async (): Promise<MyModel[]> => {
     return apiClient.get<MyModel[]>('/endpoint');
   },
 
-  // Fetch one
+  // Retrieve one
   getById: async (id: string): Promise<MyModel> => {
     return apiClient.get<MyModel>(`/endpoint/${id}`);
   },
@@ -220,7 +222,7 @@ export * from './[Service]';
 ```typescript
 const [loading, setLoading] = useState(false);
 
-const fetchData = async () => {
+const loadData = async () => {
   setLoading(true);
   try {
     const data = await apiClient.get('/data');
@@ -247,7 +249,7 @@ try {
 ### Retry with Backoff
 
 ```typescript
-async function fetchWithBackoff(url: string, maxRetries = 3) {
+async function requestWithBackoff(url: string, maxRetries = 3) {
   let lastError;
 
   for (let i = 0; i < maxRetries; i++) {
@@ -273,7 +275,7 @@ async function fetchWithBackoff(url: string, maxRetries = 3) {
 
 ```typescript
 apiClient.addRequestInterceptor(async (request) => {
-  console.log('📤 Request:', request.url, request.method, request.body);
+  console.log('📤 Request:', request.url, request.method, request.data);
   return request;
 });
 
@@ -351,7 +353,7 @@ import { apiClient } from '@core/api/client';
 jest.mock('@core/api/client');
 const mockApiClient = apiClient as jest.Mock;
 
-test('fetches data', async () => {
+test('loads data', async () => {
   mockApiClient.get.mockResolvedValue([{ id: '1', name: 'Test' }]);
 
   const result = await ServiceClass.getAll();
@@ -384,7 +386,7 @@ test('injects authorization header', async () => {
 2. **Cache Results**: Use React Query or SWR for automatic caching
 3. **Batch Requests**: Combine multiple requests into one
 4. **Pagination**: Load data in chunks, not all at once
-5. **Lazy Load**: Fetch data when needed, not on app start
+5. **Lazy Load**: Load data when needed, not on app start
 
 ---
 

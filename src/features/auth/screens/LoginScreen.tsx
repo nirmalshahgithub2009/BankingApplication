@@ -17,8 +17,8 @@ import {
 } from 'react-native';
 
 import { AuthContext } from '@navigation/RootNavigator';
-import { apiClient } from '@core/api/client';
-import { ApiError } from '@core/api/errors';
+import { apiClient } from '@core/api-new';
+import type { ApiError } from '@core/api-new/types';
 
 interface LoginResponse {
   accessToken: string;
@@ -57,8 +57,7 @@ const LoginScreen: React.FC = () => {
       // This will also update the token manager internally
       await signIn(response.accessToken, response.refreshToken);
     } catch (err) {
-      const apiError = err instanceof ApiError ? err : new ApiError({ message: String(err) });
-      const errorMessage = apiError.message || 'Login failed. Please try again.';
+      const errorMessage = err instanceof Error ? err.message : 'Login failed. Please try again.';
       setError(errorMessage);
       Alert.alert('Login Error', errorMessage);
     } finally {

@@ -173,6 +173,8 @@ const handleLogin = async () => {
 
 ### 5. **src/core/api/client.ts** (Created earlier)
 
+This API client is implemented with Axios. It uses an Axios instance for all requests, a centralized request interceptor for token injection, and a consistent response/error normalization layer.
+
 **Token Injection Interceptor:**
 
 ```typescript
@@ -190,12 +192,18 @@ private async injectTokenInterceptor(request: RequestConfig): Promise<RequestCon
 }
 ```
 
+**Axios-based Error Handling:**
+
+- Axios errors are converted into `ApiError` via `normalizeAxiosError()`
+- Network-level failures fallback to `normalizeNetworkError()`
+- Response interceptor throws structured `ApiError` for non-2xx responses
+
 **Refresh Flow on 401:**
 
 - When API returns 401 (Unauthorized)
-- Client automatically calls refresh endpoint
+- Client automatically calls refresh endpoint via `axios.post()`
 - New tokens stored in token manager via `setTokens()`
-- Original request retried with new token
+- Original request retried with the refreshed token
 
 ---
 
@@ -463,6 +471,5 @@ expect(getAccessToken()).not.toBeNull();
 ## References
 
 - [React Navigation Auth Flow](https://reactnavigation.org/docs/auth-flow)
-- [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-- [AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController)
+- [Axios](https://axios-http.com/)
 - [React Context API](https://react.dev/reference/react/useContext)

@@ -13,7 +13,7 @@ import { ROOT_ROUTES, NavigationConfig } from './config';
 import AuthNavigator from './AuthNavigator';
 import AppNavigator from './AppNavigator';
 import SplashScreen from '@features/auth/screens/SplashScreen';
-import { getAccessToken, getRefreshToken, setTokens, clearTokens } from '@core/api/tokenManager';
+import { getAccessToken, getRefreshToken, setTokens, clearTokens } from '@core/api-new';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
