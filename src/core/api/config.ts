@@ -64,7 +64,7 @@ export const setApiEnvironment = (env: ApiEnvironment): void => {
  * Get the current API configuration
  * @returns The current API configuration object with all settings and secrets
  */
-export const getAppConfig = (): ApiConfigType => API_CONFIG_BY_ENV[currentEnvironment];
+export const getApiConfig = (): ApiConfigType => API_CONFIG_BY_ENV[currentEnvironment];
 
 /**
  * Get the current API base URL

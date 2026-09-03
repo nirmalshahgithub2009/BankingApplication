@@ -18,7 +18,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import type { AuthScreenProps } from '@navigation/types';
 import { AuthContext } from '@navigation/RootNavigator';
-import { getAppConfig } from '@core/api';
+import { getApiConfig } from '@core/api';
 
 type LoginScreenProps = AuthScreenProps<'Login'>;
 
@@ -27,7 +27,7 @@ const LoginScreen: React.FC<LoginScreenProps> = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const config = getAppConfig();
+  const config = getApiConfig();
 
   console.log('hello', config.baseUrl); // 'https://api.bankapp.com'
   console.log(config.dynatraceId); // 'dt_prod_abcde'
